@@ -30,7 +30,7 @@
 
 Initial enumeration was performed using `nmap` to identify open ports and running services:
 
-```bash
+
 nmap -p- -sV -sC -Pn 10.129.11.9
 
 Key Findings:
