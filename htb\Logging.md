@@ -6,10 +6,6 @@
 ![OS](https://img.shields.io/badge/OS-Windows-blue?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Rooted-success?style=for-the-badge)
 
-<img src="../assets/MrsNobody.png" width="200" alt="MrsNobody">
-
-**MrsNobody**
-
 
 ---
 
