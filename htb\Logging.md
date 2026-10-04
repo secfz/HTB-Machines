@@ -748,10 +748,6 @@ Never spawn an interactive-prone binary (`certreq`, `net use`, `netsh`) from ins
 
 <div align="center">
 
-**Written by MrsNobody**
-
-<img src="../assets/MrsNobody.png" width="80">
-
 *Hack The Box — Logging*
 
 </div>
