@@ -1,5 +1,3 @@
----
-
 ## Overview
 
 BlockSynergy is a Flask-based blockchain wallet dashboard on port 8080, with a
@@ -10,7 +8,6 @@ path-traversal file-write bug in the internal contract engine → SSH key
 injection → hank shell → a TOCTOU race against a root-owned backup/restore
 daemon → root.
 
----
 
 ## Part 1 — User: walter
 
